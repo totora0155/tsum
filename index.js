@@ -1,8 +1,9 @@
+'use strict';
 const fs = require('fs');
 const Git = require('nodegit');
 const ora = require('ora');
 
-module.exports = function tsum(repo, flags) {
+module.exports = function tsum(repo, flags, db) {
   const matches = repo.match(/\/(.+)$/)
   if (matches === null) {
     throw Error('Please wrote `username/reponame`');
@@ -22,10 +23,19 @@ module.exports = function tsum(repo, flags) {
     });
 
     spinner.start();
-    Git.Clone(formatURL(repo), dirname)
+    const data = {
+      repo,
+      path: dirname,
+      url: formatURL(repo)
+    };
+    Git.Clone(data.url, dirname)
       .then((repo) => {
         spinner.stop();
-        console.log(`Cloned into ./${reponame}`);
+
+        process.nextTick(() => {
+          console.log(`Cloned into ./${reponame}`);
+          db('clones').push(data);
+        });
       })
   });
 };

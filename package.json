@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/totora0155/tsum#readme",
   "dependencies": {
+    "home-path": "^1.0.3",
+    "lowdb": "^0.12.5",
     "meow": "^3.7.0",
+    "mkdirp": "^0.5.1",
     "nodegit": "^0.12.2",
     "ora": "^0.2.1"
   }
