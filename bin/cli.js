@@ -19,10 +19,11 @@ const cli = meow(`
     $ tsum <url>
 
   Options
-    -b, --branch  Target a branch
-    -h, --help    Show help
-    -l, --list    Show clones
-    -d, --delete  Delete a clone
+    -b, --branch   Target a branch
+    -h, --help     Show help
+    -l, --list     Show clones
+    -d, --delete   Delete a clone
+    -r, --reclone  Reclone a repo to cwd
 
   Examples
     $ tsum "git@github.com:totora0155/tsum.git"
@@ -31,7 +32,8 @@ const cli = meow(`
     b: 'branch',
     h: 'help',
     l: 'list',
-    d: 'delete'
+    d: 'delete',
+    r: 'reclone'
   }
 });
 
@@ -39,6 +41,8 @@ if (cli.flags.h || cli.flags.help) {
   console.log(cli.help);
   process.exit(0);
 }
+
+// const tsum = require('..')(cli, db);
 
 if (cli.flags.l || cli.flags.list) {
   db.object.clones.forEach(clone => {
@@ -52,6 +56,11 @@ if (cli.flags.l || cli.flags.list) {
 if (cli.flags.d || cli.flags.delete) {
   const repo = cli.flags.d || cli.flags.delete;
   db('clones').remove({repo});
+  process.exit(0);
+}
+
+if (cli.flags.r || cli.flags.reclone) {
+  // TODO:
   process.exit(0);
 }
 
