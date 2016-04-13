@@ -1,0 +1,19 @@
+{
+  "clones": [
+    {
+      repo: "totora0155/tsum",
+      path: "path/to/tsum"
+      url: "https://github.com/totora0155/tsum.git"
+    },
+    {
+      repo: "totora0155/foo",
+      path: "path/to/tsum"
+      url: "https://github.com/totora0155/tsum.git"
+    },
+    {
+      repo: "totora0155/bar",
+      path: "path/to/foo"
+      url: "https://github.com/totora0155/bar.git"
+    }
+  ]
+}
