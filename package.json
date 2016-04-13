@@ -22,6 +22,7 @@
   "homepage": "https://github.com/totora0155/tsum#readme",
   "dependencies": {
     "meow": "^3.7.0",
-    "nodegit": "^0.12.2"
+    "nodegit": "^0.12.2",
+    "ora": "^0.2.1"
   }
 }
